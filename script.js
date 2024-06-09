@@ -7,6 +7,8 @@ const timerElement = document.getElementById('time');
 const scoreElement = document.getElementById('score');
 const initialsInput = document.getElementById('initials');
 const saveScoreButton = document.getElementById('save-score-btn');
+const restartButton = document.getElementById('restart-btn');
+
 
 let currentQuestionIndex, shuffledQuestions, score, timer, timeRemaining;
 
@@ -16,6 +18,27 @@ const questions = [
         answers: [
             { text: '4', correct: true },
             { text: '22', correct: false }
+        ]
+    },
+    {
+        question: 'Who is the goat?',
+        answers: [
+            { text: 'Ronaldo', correct: true },
+            { text: 'Messi', correct: false }
+        ]
+    },
+    {
+        question: 'Which team get the most UCL?',
+        answers: [
+            { text: 'Real Madrid', correct: true },
+            { text: 'Arsenal', correct: false }
+        ]
+    },
+    {
+        question: 'What is the programming language?',
+        answers: [
+            { text: 'PYTHON', correct: true },
+            { text: 'HTML', correct: false }
         ]
     },
     {
@@ -29,6 +52,8 @@ const questions = [
 
 startButton.addEventListener('click', startGame);
 saveScoreButton.addEventListener('click', saveScore);
+restartButton.addEventListener('click', restartGame);
+
 
 function startGame() {
     startButton.classList.add('hide');
@@ -111,4 +136,8 @@ function saveScore() {
         localStorage.setItem('highScores', JSON.stringify(highScores));
         alert('Score saved!');
     }
+}
+function restartGame() {
+    initialsInput.value = '';
+    startGame();
 }
